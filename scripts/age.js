@@ -6,11 +6,13 @@ This function should validate that the provided birth year is a number
 */
 
 function usersAge( yearBirth ){
-	
+	let currentDate = new Date();
+
+
 	if ( typeof(yearBirth) != "number"){
 		console.log( "No number provided!");
 	} else {
-		let yearCurrent = 2021;
+		let yearCurrent = currentDate.getFullYear();
 		//let yearBirth = 2000;
 
 		let age1 = yearCurrent - yearBirth;
