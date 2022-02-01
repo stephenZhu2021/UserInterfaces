@@ -51,3 +51,97 @@ function dizzy(){
 	clearTimeout(timerDizzy);	// stop the timerDozzy timeout
 	clearTimeout(timerDiy);	// stop the timerDiy timeout
 }
+
+
+/* WHATS MY NAME
+
+Write a function whatsMyName() that will prompt the user for their name. 
+If the user inputs their name, every second console.log their name -1 letter
+Examples of console output: 
+Prompt input Bob
+Console will show: 
+		Bob
+		Bo
+		B
+Once there are no letters left, alert the user good bye and their name
+		Good Bye Bob!
+
+*/
+let timerName, userName;
+
+function whatsMyName(){
+	userName = prompt("What is your name?");
+
+	if (userName != null){
+		 timerName = setTimeout(showName, 1000, userName);
+	}
+}
+
+function showName(nameLeft){
+	console.log(nameLeft);
+	nameLeft = nameLeft.substring(0, nameLeft.length-1);
+
+	if (nameLeft.length <= 0){
+		alert("Good Bye " + userName);
+	}else{
+		timerName = setTimeout(showName, 1000, nameLeft);
+	}
+
+}
+
+
+/* DOM TIMERS
+Create a new timer that will change the background every 2 seconds and alternate between black and red.
+Create a time that will alternate all the H1 text between black and orange every 2.5 seconds.
+Make sure that your colors will never be black at the same time.
+
+After 15 seconds, change the html of body to show the following code : 
+	<h1>I'm so dizzy</h1>
+*/
+
+let timerBgColor, timerH1Text;
+let colorH1 = "";
+
+// Setup timers to manipulate the DOM
+function domTimers(){
+	timerBgColor = setInterval(changeBg, 2000);
+	timerH1Text = setInterval(changeText, 2500);
+	timerDizzy = setTimeout(changeDizzy, 15000);
+}
+
+// Change background color of body element
+function changeBg(){
+	let currentStyle = document.getElementsByTagName('body')[0].style;
+
+	// let color = (currentStyle.background == "black") ?"red":"black";
+	let color;
+	if (currentStyle.background == "black" || colorH1 == "black")
+		color = "red";
+	else
+		color = "black";
+	currentStyle.background = color;
+}
+
+// Change the text color of all H1 elements
+function changeText(){
+	let allH1s = document.getElementsByTagName("h1");
+
+	// let currentStyle = allH1s[0].style.background; // get style of first H1
+	//	colorH1 = (colorH1 == "black") ? "orange" : "black";
+	
+	if (colorH1 == "black" || document.getElementsByTagName("body")[0].style.background == "black")
+		colorH1 = "orange";
+	else
+		colorH1 = "black"
+	for (let i = 0; i < allH1s.length; i++){
+		allH1s[i].style.color = colorH1;
+	}
+}
+
+// function to execute when dizzy DOM timer is done
+function changeDizzy(){
+	clearInterval(timerBgColor);
+	clearInterval(timerH1Text);
+	document.getElementsByTagName("body")[0].style.background = "white";
+	document.getElementsByTagName("body")[0].innerHTML  = "<h1>I'm so dizzy</h1>";
+}
