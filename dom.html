@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dom Events</title>
+</head>
+<body>
+<!-- HTML EVENTS -->
+	<input type="button" 
+		onClick="alert('Does not work');" 
+		onMouseUp="console.log('mouseDown');" 
+		onMouseDown="console.log('mouseDown');" 
+		value="Say hi!" />
+	
+	<p id="intro" onClick="changeBG()"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla temporibus ex nihil quam perferendis similique totam alias hic sunt! <strong onClick="sayBye('Peter');sayHello();">Repudiandae</strong> itaque nulla sequi, incidunt adipisci harum libero ab laboriosam!</p>
+
+	<!-- JS EVENT LISTENERS -->
+	<img src="https://picsum.photos/200/300" alt="Random" id="mainImage" />
+	<input type="text" id="txtName" name="name" />
+	<br>
+	<input type="checkbox" id="chkDefault" name="checkbox">
+	<a href="http://google.ca" id="searchEngine">Search Engine</a><br>
+	<a href="http://google.ca">Search Engine OPEN</a>
+
+	<script src="scripts/events.js"></script>
+</body>
+</html>
