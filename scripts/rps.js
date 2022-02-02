@@ -45,3 +45,7 @@ let buttons = document.querySelectorAll("input");
 for (let i = 0; i < buttons.length; i++){
 	buttons[i].addEventListener("click", playRPS);
 }
+// previous loop would be equivalent as adding individual listeners
+// document.getElementById("btnRock").addEventListener("click", playRPS);
+// document.getElementById("btnPaper").addEventListener("click", playRPS);
+// document.getElementById("btnScissor").addEventListener("click", playRPS);
