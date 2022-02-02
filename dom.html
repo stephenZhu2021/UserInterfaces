@@ -8,8 +8,9 @@
 </head>
 <body>
 <!-- HTML EVENTS -->
+<!-- to escape double quote, we need to use special characters (or we can use single quote)-->
 	<input type="button" 
-		onClick="alert('Does not work');" 
+		onClick="alert(&quot;Does not work&quot;);"
 		onMouseUp="console.log('mouseDown');" 
 		onMouseDown="console.log('mouseDown');" 
 		value="Say hi!" />
