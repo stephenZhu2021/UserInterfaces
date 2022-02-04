@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Radio</title>
+	<style>
+		img{ max-width: 50px;}
+	</style>
+</head>
+<body>
+	<input type="radio" name="hair" id="radShort" value="short">
+	<label for="radShort">Short Hair</label><br>
+	<input type="radio" name="hair" id="radLong" value="long">
+	<label for="radLong">Long Hair</label><br>
+	<input type="radio" name="hair" id="radBoth" value="both">
+	<label for="radBoth">Both Hair</label><br>
+
+	<script>
+		/*
+Add 3 radio buttons to your HTML page
+Long hair
+Short hair
+Both
+Once an item is selected create an image element and show the appropriate image according to their selection.
+*/
+		// images found on google images
+		const HAIR_SHORT = "https://i.pinimg.com/originals/c7/f4/0a/c7f40a816fe564b058ff6bd12763581f.jpg";
+		const HAIR_LONG = "https://i.pinimg.com/originals/4e/ca/f6/4ecaf6a1987f8277255774e894da9b13.jpg";
+		const HAIR_BOTH = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Modern_Mullet.jpg/800px-Modern_Mullet.jpg";
+
+		/**
+		 * Show different hair depending on triggered event
+		 * @param {string} event Event that executed function
+		 */ 
+ 		function showHair(e){
+			let currentHair = this.value;
+			console.log (currentHair);
+			
+			let newImg = document.createElement("img");
+			let newSrc = "";
+			switch ( this.value ){
+				case "short"	: newSrc = HAIR_SHORT; break
+				case "long"	: newSrc = HAIR_LONG; break
+				case "both"	: newSrc = HAIR_BOTH; break
+				default: newSrc = "";
+			}
+
+			if (newSrc != ""){ // just in case
+				newImg.src = newSrc;
+			}
+			document.getElementsByTagName("body")[0].appendChild(newImg);
+		}
+		// Event Listeners
+		document.getElementById("radShort").addEventListener("click", showHair);
+		document.getElementById("radLong").addEventListener("click", showHair);
+		document.getElementById("radBoth").addEventListener("click", showHair);
+	</script>
+</body>
+</html>

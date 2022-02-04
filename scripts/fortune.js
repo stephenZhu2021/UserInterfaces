@@ -1,20 +1,23 @@
 /*
-Turn the script into a function
-The last parameter should be Number of Kids
-Number of kids should have a default value of 0
-
-Change the sentence structure depending on number of children.  
-if NUMBER OF KIDS is 0, do not mention them
-…and live in   G   with your dog   D .
-if NUMBER OF KIDS is 1, kids is singular
-…and live in   G with your 1 kid and your dog   D .
-if NUMBER OF KIDS is greater then 1, kids is plural
-…and live in   G with your   N   kids and your dog   D .
-if NUMBER OF KIDS is less then 0, do not mention them
-…and live in   G with your dog   D  .
-
+- Create and HTML page with a form that will allow the user to fill in their information.
+- Do NOT add an input for the number of children. Instead generate a random number between 0 and 7.
+- Your page should also include a space for the completed fortune to be displayed.
+- Complete the form and display the fortune to the user – Ensure that the new fortune appear above the old.
+- Validate the information provided in the form. Should something be wrong, change the border color or your input to red.
 */
 
+const MAX_NUM_KIDS = 7;
+let formIsValid = true;
+
+/**
+ * Given some information, provide the user with their fortune.
+ * @param {string} partnerName Name of the partner
+ * @param {string} jobTitle Job title
+ * @param {string} geoLocal Location
+ * @param {string} dogName Name of the dog
+ * @param {int} [numKids=0]	Number of kids 
+ * @returns {string} the completed fortune
+ */
 function fortuneTeller(partnerName, jobTitle, geoLocal, dogName, numKids=0){
 	// Variables now delcared and initialized in function call
 	/*
@@ -66,5 +69,73 @@ function fortuneTeller(partnerName, jobTitle, geoLocal, dogName, numKids=0){
 	}
 */
 
-	console.log( fortune );
+	return( fortune );
 }
+
+/**
+ * Form validation function
+ * @param {string} event Event that executed function 
+ */
+function formSubmit(event){
+	event.preventDefault();	// prevent form submit
+	
+	formIsValid = true; // reset flag
+
+	// validate partnerName
+	validateNotEmpty("txtPartner");
+	validateNotEmpty("txtJob");
+	validateNotEmpty("txtLocation");
+	validateNotEmpty("txtDog");
+
+	// if form is valid process the information
+	if (formIsValid){
+
+		// get random number of kids
+		numKids = randomInt(MAX_NUM_KIDS);
+
+		// get new fortune
+		let newFortune = fortuneTeller(
+				document.getElementById("txtPartner").value,
+				document.getElementById("txtJob").value,
+				document.getElementById("txtLocation").value,
+				document.getElementById("txtDog").value,
+				numKids
+				);
+
+		// display the fortune
+		let newP = document.createElement("p");
+		newP.innerText = newFortune;
+		document.getElementById("fortunes").prepend( newP );
+
+		// OPTION 2 OF DISPLAYING THE FORTUNES
+		// let fortuneOutput = document.getElementById("fortunes");
+		// fortuneOutput.innerHTML = "<p>" + newFortune + "</p>" + fortuneOutput.innerHTML;
+		}
+}
+
+/**
+ * Validate is element value is empty. If is, flag the form and change border color. 
+ * @param {string} elemID Element ID to be checked
+ */
+function validateNotEmpty( elemID ){
+	let elem = document.getElementById( elemID );	// reusable variable
+
+	if (elem.value == ""){
+		formIsValid = false;	// form not valid anymore
+		elem.style.borderColor = "red";	// change border color to red
+	}else
+		elem.style.borderColor = "";	// change border color back to default
+}
+
+/**
+ * Generates a random number form 0 to MAX inclusive
+ * 
+ * @param {Number} max is the maximum number you can randomly generate.
+ * @return {Number} returns randomly generated number.
+ */
+ function randomInt(max) {
+	return Math.floor(Math.random() * (max+1));
+}
+
+// Event listener for form submission
+document.getElementById("formFortune").addEventListener("submit", formSubmit);
