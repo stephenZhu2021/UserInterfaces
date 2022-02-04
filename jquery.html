@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery</title>
+</head>
+<body>
+	
+	<h1>Hello</h1>
+	<h2>Groceries</h2>
+	<ul>
+		<li>Apples <img src="https://picsum.photos/25/25" alt="apples" id="myApples"></li>
+		<li>Bananab <img src="https://picsum.photos/25/25" alt="apples" ></li>
+		<li>Cherry</li>
+	</ul>
+	<h2>Winners</h2>
+	<ol>
+		<li>First place</li>
+		<li>Second place</li>
+		<li>Third place</li>
+	</ol>
+	<h2>That's all</h2>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script>
+		/* curly brackets needed or multiple property changes */
+		// $("h2").css({"color" : "#915478", "background-color":"#433443"});
+
+		// let myElem = "h2"; 
+		// $(myElem).css("color", "#987001");
+		// $(myElem).css("background-color", "#514999");
+
+		// CHAINING
+		// $("h2").css("color", "#991025").css("background-color", "#235140");
+
+		function changeColor(){
+			$("h2").css("color", "#2eba7c");
+		}
+
+		/* EVENTS */
+		$("h2").on("click", function(event){ 
+			console.log(event);
+			$("li img").hide();
+		});
+
+		// Alternative to .on("click" ....)
+		$("li").click(function(event){
+			$("#myApples").show();
+		})
+		/* HTML EQUIVALENT */
+		// let items = document.querySelectorAll("li");
+		// for (let i = 0; i < items.length; i++){
+		// 	items[i].addEventListener("click", function(){
+		// 		document.getElementById("myApples").style.display = "";
+		// 	});
+		// }
+		
+		/* HOVER method takes a mouse On callback and a mouse OUT callback */
+		$("li").hover(function(){
+			$(this).css("color", "red");
+		}, function(){
+			$(this).css("color", "lime");
+		});
+
+	</script>
+</body>
+</html>
