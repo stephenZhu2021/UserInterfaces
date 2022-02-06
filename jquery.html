@@ -21,6 +21,7 @@
 		<li>Third place</li>
 	</ol>
 	<h2>That's all</h2>
+	<p id="intro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, unde modi sit nam, voluptatum blanditiis optio voluptates quis distinctio vitae saepe enim repellat aliquam. Id temporibus unde et veniam tenetur!</p>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
@@ -63,6 +64,11 @@
 			$(this).css("color", "lime");
 		});
 
+$.get("https://api.chucknorris.io/jokes/random", {"category":"sport"}, function(data){
+console.log(data)
+});
+
+			
 	</script>
 </body>
 </html>
