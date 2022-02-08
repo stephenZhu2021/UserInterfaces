@@ -28,9 +28,23 @@ Change!
 
 
 <!-- include jQuery library here-->
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
+/*
+1. Add the jQuery library to the html page.
+2. When the button is clicked, all occurrences of the word Orange should be changed to the text specified in the input field. 
+	The input field currently has the word Blue.
+*/
 
+
+	// When the button is clicked
+	$("#button_change").on("click", function(){
+		// text specified in the input field
+		let newColor = $("#input_color").val();
+		// all occurrences of the word Orange should be changed
+		$(".applesauce").text( newColor );
+
+	})
 </script>
 
 </body>

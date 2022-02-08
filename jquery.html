@@ -26,7 +26,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
 		/* curly brackets needed or multiple property changes */
-		// $("h2").css({"color" : "#915478", "background-color":"#433443"});
+		//  $("h2").css({"color" : "#915478", "background-color":"#433443"});
 
 		// let myElem = "h2"; 
 		// $(myElem).css("color", "#987001");
@@ -56,14 +56,29 @@
 		// 		document.getElementById("myApples").style.display = "";
 		// 	});
 		// }
-		
+	
+
 		/* HOVER method takes a mouse On callback and a mouse OUT callback */
 		$("li").hover(function(){
 			$(this).css("color", "red");
+			document.getElementById("intro").style.background = "blue";
 		}, function(){
 			$(this).css("color", "lime");
+			document.getElementById("intro").style.background = "white";
 		});
 
+		/* EACH - looping */
+		let colorCount = 948759;
+		$("h2").each(function(index) {
+			$(this).css({"color" : "#" + colorCount, "background-color":"#" + (colorCount-33456)});
+			colorCount -= 259847;
+		})
+
+		function showHide(){
+			$("p#intro").slideToggle(1000, function(){ console.log("Done!"); });
+		}
+
+		/* AJAX - COMING SOON*/
 $.get("https://api.chucknorris.io/jokes/random", {"category":"sport"}, function(data){
 console.log(data)
 });
