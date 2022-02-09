@@ -23,6 +23,7 @@
 	<h2>That's all</h2>
 	<p id="intro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, unde modi sit nam, voluptatum blanditiis optio voluptates quis distinctio vitae saepe enim repellat aliquam. Id temporibus unde et veniam tenetur!</p>
 
+	<div id="pokemon"></div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
 		/* curly brackets needed or multiple property changes */
@@ -78,9 +79,25 @@
 			$("p#intro").slideToggle(1000, function(){ console.log("Done!"); });
 		}
 
+		// AJAX LOAD
+		// $("#intro").load("http://google.ca");
+
+		// show top pokemon with their image and their names in the #pokemon div
+
+		for (let i = 27; i< 37; i++)
+			$.get("https://pokeapi.co/api/v2/pokemon/" + i + "/", showPokemon);
+		
+		function showPokemon(data){
+			let pokeName = data.name;
+			let pokeImage = data.sprites.front_default;
+			let newElem = $("<img src='" + pokeImage + "' alt='" + pokeName + "'/>");
+			$("#pokemon"). append(newElem);
+			$("#pokemon").html( $("#pokemon").html() + pokeName + "<br>"); 
+		}
+
 		/* AJAX - COMING SOON*/
 $.get("https://api.chucknorris.io/jokes/random", {"category":"sport"}, function(data){
-console.log(data)
+	console.log(data)
 });
 
 			

@@ -42,26 +42,36 @@
     </div>
     </div>
 
-    <!-- include the jQuery library -->    
+    <!-- include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
-    
+    /*
+1. Add the jQuery library to the html page.
+2. Toggle Colors buttons will toggle the background color between white and cardinal.
+3. Toggle Rounded Borders button will toggle the appearance of a border on the boxes.
+4. Add a New Box button will adds one new box
+*/
       var colorCardinal = "rgb(153, 51, 51)"
   
       $(document).ready(function() {
-  
+        $(".box").addClass("outlined");
         $("#button_toggle_colors").click(function() {
           /* Your code goes here for Step 2 */
-          
+           $(".box").toggleClass("cardinal");
         });
   
         $("#button_toggle_roundedges").click(function() {
           /* Your code goes here for Step 3*/
-          
+          $(".box").toggleClass("round-edge");
         });
   
         $("#button_add_box").click(function() {
           /* Your code goes here for Step 4 */
+          let boxCount = $(".box").length;
+          
+          let newElem = $("<div id='box" + (boxCount+1) + "' class='box outlined'></div>");
   
+          $("#boxes").append( newElem );
         });
   
         
