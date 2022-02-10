@@ -1,9 +1,7 @@
 $(document).ready(function () {
   $.getJSON('json/heroes.json',function (data) {
-    console.log(data)
     // header
-    $('header').append($(`<h1>${data.squadName}</h1>`)) 
-    $('header').append($(`<p>Hometown: ${data.homeTown} // Formed: ${data.formed}</p>`))
+    $('header').append($(`<h1>${data.squadName}</h1>`)).append($(`<p>Hometown: ${data.homeTown} // Formed: ${data.formed}</p>`))
 
     // article
     for (const heros of data.members) {
